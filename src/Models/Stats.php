@@ -29,7 +29,7 @@ class Stats extends Model
      * @param string $date expects a date with format Y-m-d or uses current date if null
      * @return bool updated stats success or not
      */
-    public function updateStats($date = null)
+    public function updateStats($point = 1, $date = null)
     {
         //checks for a valid date format
         if (! empty($date) && ! self::validDateFormat($date)) {
@@ -41,7 +41,7 @@ class Stats extends Model
         $this->one_day_stats = $this->_calculate_days_stats(1, $raw_stats, $date);
         $this->seven_days_stats = $this->_calculate_days_stats(7, $raw_stats, $date);
         $this->thirty_days_stats = $this->_calculate_days_stats(30, $raw_stats, $date);
-        $this->all_time_stats = $this->all_time_stats + 1;
+        $this->all_time_stats = $this->all_time_stats + $point;
         // Update raw_stats for date
         if (isset($raw_stats) && is_array($raw_stats) && count($raw_stats) >= 30) {
             // remove older than 30 days stats
@@ -52,7 +52,7 @@ class Stats extends Model
             if (! isset($raw_stats[$date])) {
                 $raw_stats[$date] = 1;
             } else {
-                $raw_stats[$date]++;
+                $raw_stats[$date] = $raw_stats + $point;
             }
         }
         $this->raw_stats = $raw_stats;
