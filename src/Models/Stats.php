@@ -38,9 +38,9 @@ class Stats extends Model
       $date = empty($date) ? gmdate('Y-m-d') : $date;
       $raw_stats = $this->raw_stats;
       // Update model with new stats
-      $this->one_day_stats = $this->_calculate_days_stats(1, $raw_stats, $date);
-      $this->seven_days_stats = $this->_calculate_days_stats(7, $raw_stats, $date);
-      $this->thirty_days_stats = $this->_calculate_days_stats(30, $raw_stats, $date);
+      $this->one_day_stats = $this->_calculate_days_stats($point, 1, $raw_stats, $date);
+      $this->seven_days_stats = $this->_calculate_days_stats($point, 7, $raw_stats, $date);
+      $this->thirty_days_stats = $this->_calculate_days_stats($point, 30, $raw_stats, $date);
       $this->all_time_stats = $this->all_time_stats + $point;
       // Update raw_stats for date
       if (isset($raw_stats) && is_array($raw_stats) && count($raw_stats) >= 30) {
@@ -68,7 +68,7 @@ class Stats extends Model
     * @param string  $date           base date
     * @return int                number of hits
     */
-   private function _calculate_days_stats($days, $existing_stats, $date)
+   private function _calculate_days_stats($point = 1, $days, $existing_stats, $date)
    {
       if ($existing_stats && $days == 1) {
          if (isset($existing_stats[$date])) {
@@ -89,7 +89,7 @@ class Stats extends Model
             }
          }
 
-         return $total + $extra_to_add + 1;
+         return $total + $extra_to_add + $point;
       }
 
       return 1;
