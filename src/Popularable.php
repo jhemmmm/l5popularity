@@ -22,7 +22,7 @@ trait Popularable
                 $this->popularityStats()->save($stats);
             }
 
-            return $stats->updateStats($point);
+            return $stats->updateStats($point, now()->format('Y-m-d'));
         }
 
         return false;
