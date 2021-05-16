@@ -47,12 +47,12 @@ class Stats extends Model
          // remove older than 30 days stats
          array_shift($raw_stats);
          // add new date
-         $raw_stats[$date] = 1;
+         $raw_stats[$date] = $point;
       } else {
          if (!isset($raw_stats[$date])) {
-            $raw_stats[$date] = 1;
+            $raw_stats[$date] = $point;
          } else {
-            $raw_stats[$date]++;
+            $raw_stats[$date]+= $point;
          }
       }
       $this->raw_stats = $raw_stats;
@@ -72,7 +72,7 @@ class Stats extends Model
    {
       if ($existing_stats && $days == 1) {
          if (isset($existing_stats[$date])) {
-            return (int) $existing_stats[$date] + 1;
+            return (int) $existing_stats[$date] + $point;
          }
       } elseif ($existing_stats) {
          $extra_to_add = 0;
@@ -92,7 +92,7 @@ class Stats extends Model
          return $total + $extra_to_add + $point;
       }
 
-      return 1;
+      return $point;
    }
 
    /**
