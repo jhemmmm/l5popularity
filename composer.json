@@ -1,45 +1,43 @@
 {
-    "name": "sweeeeep/l5popularity",
-    "description": "Laravel Package for Tracking popular item in Eloquent models",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Raeywen Regachuelo",
-            "email": "raeywenregach@gmail.com",
-            "homepage": "http://sweeeeep.github.io"
-        }
-    ],
-    "homepage": "https://github.com/sweeeeep/popularity",
-    "keywords": ["Laravel", "Popularity"],
-    "require": {
-        "php": "^7.2",
-        "illuminate/support": "^6.0|^7.0"
-    },
-    "require-dev": {
-        "orchestra/testbench": "^4.4|^5.0",
-        "phpunit/phpunit": "^8.0"
-    },
-    "autoload": {
-        "classmap": [
-            "database/Migrations"
-        ],
-        "psr-4": {
-            "Sweeeeep\\Popularity\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Sweeeeep\\Popularity\\Tests\\": "tests"
-        }
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Sweeeeep\\Popularity\\PopularityServiceProvider"
-            ],
-            "aliases": {
-                "Popularity": "Sweeeeep\\Popularity\\Facades\\Popularity"
-            }
-        }
-    }
+   "name": "sweeeeep/l5popularity",
+   "description": "Laravel Package for Tracking popular item in Eloquent models",
+   "license": "MIT",
+   "authors": [{
+      "name": "Raeywen Regachuelo",
+      "email": "raeywenregach@gmail.com",
+      "homepage": "http://sweeeeep.github.io"
+   }],
+   "homepage": "https://github.com/sweeeeep/popularity",
+   "keywords": ["Laravel", "Popularity"],
+   "require": {
+      "php": "^8.2",
+      "illuminate/support": "^6.0|^7.0|^10.0"
+   },
+   "require-dev": {
+      "orchestra/testbench": "^4.4|^5.0",
+      "phpunit/phpunit": "^8.0"
+   },
+   "autoload": {
+      "classmap": [
+         "database/Migrations"
+      ],
+      "psr-4": {
+         "Sweeeeep\\Popularity\\": "src/"
+      }
+   },
+   "autoload-dev": {
+      "psr-4": {
+         "Sweeeeep\\Popularity\\Tests\\": "tests"
+      }
+   },
+   "extra": {
+      "laravel": {
+         "providers": [
+            "Sweeeeep\\Popularity\\PopularityServiceProvider"
+         ],
+         "aliases": {
+            "Popularity": "Sweeeeep\\Popularity\\Facades\\Popularity"
+         }
+      }
+   }
 }
